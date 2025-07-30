@@ -1,4 +1,4 @@
-import { Layout, Space } from "antd";
+import { Layout } from "antd";
 import { styled } from "styled-components";
 
 const { Header } = Layout;
@@ -10,7 +10,9 @@ export const HeaderContainer = styled(Header)`
 	padding-right: 16px !important;
 `;
 
-export const SpaceBox = styled(Space)`
+export const NamePermission = styled.div`
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	line-height: normal;
 `;

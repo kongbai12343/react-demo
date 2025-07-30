@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined } from "@ant-design/icons";
-import { Button, theme, Space, Avatar, Breadcrumb, Dropdown } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined, ExclamationCircleFilled } from "@ant-design/icons";
+import { Button, theme, Space, Avatar, Breadcrumb, Dropdown, Modal } from "antd";
 import { useNavigate, useLocation } from "react-router";
 import { observer } from "mobx-react-lite";
 import globalContext from "@/utils/globalContext.js";
-import { HeaderContainer, SpaceBox } from "@/pages/layout/styles/header.style.js";
+import { HeaderContainer, NamePermission } from "@/pages/layout/styles/header.style.js";
 
 const Header = observer((props) => {
 	const { collapsed, toggle } = props;
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
+	const { confirm } = Modal;
 
 	const { userInfoStore } = useContext(globalContext);
 	const navigate = useNavigate();
@@ -24,9 +25,14 @@ const Header = observer((props) => {
 		{ key: "changePassword", label: "修改密码" },
 	];
 
-	const onClick = ({ key }) => {
-		switch (key) {
-			case "logout":
+	const logoutTips = () => {
+		confirm({
+			title: "提示",
+			okText: "确定",
+			cancelText: "取消",
+			icon: <ExclamationCircleFilled />,
+			content: "确定退出吗？",
+			onOk() {
 				userInfoStore.setUserInfo(null);
 				localStorage.removeItem("userInfo");
 				userInfoStore.setToken("");
@@ -34,6 +40,13 @@ const Header = observer((props) => {
 				userInfoStore.setHasPermission("");
 				localStorage.removeItem("hasPermission");
 				navigate("/login");
+			},
+		});
+	};
+	const onClick = ({ key }) => {
+		switch (key) {
+			case "logout":
+				logoutTips();
 				break;
 			case "changePassword":
 				// navigate("/changePassword");
@@ -68,14 +81,14 @@ const Header = observer((props) => {
 			/>
 			<Dropdown menu={{ items, onClick }}>
 				<a onClick={(e) => e.preventDefault()}>
-					<SpaceBox>
+					<Space>
 						<Avatar src="src/assets/images/user@2x.png" />
-						<Space>
-							<div>{userInfo?.name}</div>
-							<div>{userInfo?.postName}</div>
-						</Space>
+						<NamePermission>
+							<span>{userInfo?.name}</span>
+							<span>{userInfo?.postName}</span>
+						</NamePermission>
 						<DownOutlined />
-					</SpaceBox>
+					</Space>
 				</a>
 			</Dropdown>
 		</HeaderContainer>
