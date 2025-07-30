@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router";
 import { lazy } from "react";
 
-const LayoutBox = lazy(() => import("../pages/layout/LayoutBox.jsx"));
+const Layout = lazy(() => import("../pages/layout/Layout.jsx"));
 const Login = lazy(() => import("../pages/login/Login.jsx"));
 const NotFound = lazy(() => import("../pages/notFound/NotFound.jsx"));
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		Component: LayoutBox,
+		Component: Layout,
 		// children: [
 		// 	{
 		// 		index: true,

@@ -2,13 +2,13 @@ import React from "react";
 import { Outlet } from "react-router";
 import { Layout, theme } from "antd";
 
-const { Content } = Layout;
-const ContentBox = () => {
+const { Content: AntdContent } = Layout;
+const Content = () => {
 	const {
 		token: { colorBgContainer, borderRadiusLG },
 	} = theme.useToken();
 	return (
-		<Content
+		<AntdContent
 			style={{
 				margin: "24px 16px",
 				padding: 24,
@@ -18,7 +18,7 @@ const ContentBox = () => {
 			}}
 		>
 			<Outlet />
-		</Content>
+		</AntdContent>
 	);
 };
-export default ContentBox;
+export default Content;

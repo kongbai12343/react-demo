@@ -20,7 +20,7 @@ import {
 import api from "@/apis";
 import globalContext from "@/utils/globalContext.js";
 
-const Login = () => {
+const Login = observer(() => {
 	const version = import.meta.env.VITE_WEB_VERSION;
 
 	const { userInfoStore } = useContext(globalContext);
@@ -86,6 +86,6 @@ const Login = () => {
 			</LoginRight>
 		</LoginContainer>
 	);
-};
+});
 
-export default observer(Login);
+export default Login;

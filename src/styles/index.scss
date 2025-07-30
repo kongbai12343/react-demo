@@ -1,0 +1,18 @@
+body {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ant-menu-submenu-popup > .ant-menu-sub {
+  max-height: 500px !important;       /* 👉 控制最大高度 */
+  overflow: hidden;
+  overflow-y: scroll;        /* 👉 超出时滚动 */
+  scrollbar-width: none;   /* 👉 Firefox 隐藏滚动条 */
+}
+
+/* 👉 Chrome / Edge / Safari 隐藏滚动条 */
+.ant-menu-submenu-popup > .ant-menu-sub::-webkit-scrollbar {
+  display: none;
+}

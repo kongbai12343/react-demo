@@ -4,7 +4,7 @@ import "@ant-design/v5-patch-for-react-19";
 import "normalize.css";
 import App from "./App.jsx";
 import store from "./store/index.js";
-
+import "@/styles/index.scss";
 import globalContext from "./utils/globalContext.js";
 
 createRoot(document.getElementById("root")).render(
