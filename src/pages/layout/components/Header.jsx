@@ -25,6 +25,8 @@ const Header = observer((props) => {
 		{ key: "changePassword", label: "修改密码" },
 	];
 
+	const breadcrumbs = [{ title: "首页" }, { title: "系统管理" }, { title: "用户管理" }];
+
 	const logoutTips = () => {
 		confirm({
 			title: "提示",
@@ -66,26 +68,14 @@ const Header = observer((props) => {
 					height: 64,
 				}}
 			/>
-			<Breadcrumb
-				items={[
-					{
-						title: "首页",
-					},
-					{
-						title: "系统管理",
-					},
-					{
-						title: "用户管理",
-					},
-				]}
-			/>
+			<Breadcrumb items={breadcrumbs} />
 			<Dropdown menu={{ items, onClick }}>
 				<a onClick={(e) => e.preventDefault()}>
 					<Space>
 						<Avatar src="src/assets/images/user@2x.png" />
 						<NamePermission>
 							<span>{userInfo?.name}</span>
-							<span>{userInfo?.postName}</span>
+							<span style={{ opacity: 0.6 }}>{userInfo?.postName}</span>
 						</NamePermission>
 						<DownOutlined />
 					</Space>

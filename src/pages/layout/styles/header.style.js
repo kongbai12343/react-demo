@@ -15,4 +15,6 @@ export const NamePermission = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	line-height: normal;
+	font-size: 12px;
+	color: #606266;
 `;
