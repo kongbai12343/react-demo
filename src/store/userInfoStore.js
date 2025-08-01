@@ -20,19 +20,6 @@ class UserInfoStore {
 	setHasPermission(hasPermissionStr) {
 		this.hasPermission = hasPermissionStr ? hasPermissionStr.split("|") : [];
 	}
-
-	getUserInfo() {
-		return this.userInfo;
-	}
-
-	getToken() {
-		return this.token;
-	}
-
-	getHasPermission() {
-		return this.hasPermission;
-	}
-
 }
 
 export default new UserInfoStore();

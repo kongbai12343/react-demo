@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { observer } from "mobx-react-lite";
 import { Menu } from "antd";
 import useMenuItems from "@/hooks/useMenuItems";
-
+import globalContext from "@/utils/globalContext.js";
 import { SiderWrapper, SiderTitle } from "../styles/sider.style.js";
 
-const Sider = (props) => {
+const Sider = observer((props) => {
 	const { collapsed } = props;
 
+	const { menuStore } = useContext(globalContext);
 	const [menuItems, selectedKeys, openKeys, setOpenKeys, handleMenuClick] = useMenuItems();
-	console.log(menuItems);
+
+	useEffect(() => {
+		console.log(menuItems);
+	}, [menuItems]);
 
 	// 查找菜单项的路径
 	const findMenuItemPath = (key, items) => {
@@ -31,6 +36,7 @@ const Sider = (props) => {
 	// 处理菜单展开/收起事件
 	const handleOpenChange = (keys) => {
 		setOpenKeys(keys);
+		menuStore.setOpenKeys(keys);
 	};
 
 	return (
@@ -48,5 +54,6 @@ const Sider = (props) => {
 			/>
 		</SiderWrapper>
 	);
-};
+});
+
 export default Sider;
