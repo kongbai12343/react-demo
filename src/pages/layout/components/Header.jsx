@@ -23,7 +23,7 @@ const Header = observer((props) => {
 		{ key: "changePassword", label: "修改密码" },
 	];
 
-	const breadcrumbs = [{ title: "首页" }, { title: "系统管理" }, { title: "用户管理" }];
+	const [breadcrumbs, setBreadcrumbs] = useState([]);
 
 	const [show, setShow] = useState(false);
 	const [account, _] = useState(() => {
@@ -37,29 +37,35 @@ const Header = observer((props) => {
 	const { pathname } = useLocation(); // 获取当前路由
 
 	useEffect(() => {
-		const menuData = JSON.parse(localStorage.getItem("menuData"));
-		const openKey = Number(JSON.parse(localStorage.getItem("menuOpenKeys"))[0]);
-		const selectedKey = Number(JSON.parse(localStorage.getItem("menuSelectedKeys"))[0]);
-		console.log(findBreadcrumb(menuData, openKey, selectedKey));
+		const menuData = localStorage.getItem("menuData");
+		const openKeys = localStorage.getItem("menuOpenKeys");
+		const selectedKeys = localStorage.getItem("menuSelectedKeys");
+
+		if (menuData && openKeys && selectedKeys) {
+			const parsedMenuData = JSON.parse(menuData);
+			const openKey = Number(JSON.parse(openKeys)[0]);
+			const selectedKey = Number(JSON.parse(selectedKeys)[0]);
+
+			let breadcrumbs = findBreadcrumb(parsedMenuData, openKey, selectedKey);
+			setBreadcrumbs(breadcrumbs);
+		}
 	}, [pathname]);
 
 	const findBreadcrumb = (menuData, openKey, selectedKey) => {
-		return menuData.map((item) => {
-			if (item.id === openKey) {
-				return {
-					title: item.menuName,
-				};
+		if (!menuData || !Array.isArray(menuData)) return [];
+		let breadcrumb = [];
+		let firstMenu = menuData.find((item) => item.id === openKey);
+		if (firstMenu) {
+			breadcrumb.push({ title: firstMenu.menuName });
+			// 获取二级菜单
+			if (firstMenu.children && firstMenu.children.length > 0) {
+				const secondMenu = firstMenu.children.find((item) => item.id === selectedKey);
+				if (secondMenu) {
+					breadcrumb.push({ title: secondMenu.menuName });
+				}
 			}
-			if (item.children) {
-				// const findItem = findBreadcrumb(item.children, null, selectedKey);
-				// if (findItem) {
-				// 	return {
-				// 		title: item.menuName,
-				// 	};
-				// }
-				return findBreadcrumb(item.children, null, selectedKey);
-			}
-		});
+		}
+		return breadcrumb;
 	};
 	const logout = () => {
 		// 清理用户信息

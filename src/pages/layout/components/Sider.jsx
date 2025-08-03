@@ -11,10 +11,6 @@ const Sider = observer((props) => {
 	const { menuStore } = useContext(globalContext);
 	const [menuItems, selectedKeys, openKeys, setOpenKeys, handleMenuClick] = useMenuItems();
 
-	useEffect(() => {
-		console.log(menuItems);
-	}, [menuItems]);
-
 	// 查找菜单项的路径
 	const findMenuItemPath = (key, items) => {
 		for (const item of items) {

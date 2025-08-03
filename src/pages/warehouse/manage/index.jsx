@@ -1,7 +1,12 @@
 import React from "react";
+import BaseTable from "@/component/BaseTable.jsx";
 
 const Manager = () => {
-	return <div>Manager</div>;
+	return (
+		<div>
+			<BaseTable />
+		</div>
+	);
 };
 
 export default Manager;
