@@ -4,6 +4,7 @@ import { lazy } from "react";
 const Layout = lazy(() => import("@/pages/layout/Layout.jsx"));
 const Login = lazy(() => import("@/pages/login/Login.jsx"));
 const NotFound = lazy(() => import("@/pages/notFound/NotFound.jsx"));
+const BaseTableExample = lazy(() => import("@/component/BaseTable/BaseTableExample.jsx"));
 
 import commodityRouter from "./commodity.js";
 import companyInformationRouter from "./companyInformation.js";
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
 		path: "/",
 		Component: Layout,
 		children: [
+			{
+				path: "table-demo",
+				Component: BaseTableExample,
+			},
 			...commodityRouter,
 			...companyInformationRouter,
 			...customerRouter,
