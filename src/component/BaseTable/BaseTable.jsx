@@ -14,7 +14,6 @@
 import React, { useState, useEffect, useCallback, forwardRef, useImperativeHandle } from "react";
 import { Table } from "antd";
 import SearchForm from "./SearchForm.jsx";
-import AdvancedSearch from "./AdvancedSearch.jsx";
 import "./BaseTable.scss";
 
 const BaseTable = forwardRef((props, ref) => {
@@ -174,12 +173,6 @@ const BaseTable = forwardRef((props, ref) => {
 					isAdvancedSearchOpen={isAdvancedSearchOpen}
 					onAdvancedSearchToggle={onAdvancedSearchToggle}
 					showAdvancedToggle={advancedFilters.length > 0}
-				/>
-			)}
-
-			{/* 高级搜索区域 */}
-			{isAdvancedSearchOpen && advancedFilters.length > 0 && (
-				<AdvancedSearch
 					filters={advancedFilters}
 					selectedFilters={selectedAdvancedFilters}
 					onChange={handleAdvancedFilterChange}

@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { Form, Row, Col, Button, Input, Select, DatePicker, Space, Divider } from "antd";
 import { SearchOutlined, ReloadOutlined, DownOutlined, UpOutlined } from "@ant-design/icons";
+import AdvancedSearch from "./AdvancedSearch.jsx";
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -13,6 +14,9 @@ const SearchForm = (props) => {
 		isAdvancedSearchOpen = false,
 		onAdvancedSearchToggle,
 		showAdvancedToggle = false,
+		filters = [],
+		selectedFilters = [],
+		onChange,
 	} = props;
 
 	const [form] = Form.useForm();
@@ -95,9 +99,14 @@ const SearchForm = (props) => {
 					</Row>
 				))}
 
+				{/* 高级搜索区域 */}
+				{isAdvancedSearchOpen && showAdvancedToggle && (
+					<AdvancedSearch filters={filters} selectedFilters={selectedFilters} onChange={onChange} />
+				)}
+
 				{/* 按钮区域 */}
 				<Row justify="center">
-					<Col span={24}>
+					<Col>
 						<Space>
 							<Button type="primary" icon={<SearchOutlined />} onClick={handleSearch}>
 								搜索

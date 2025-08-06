@@ -101,7 +101,6 @@ const AdvancedSearch = (props) => {
 					</Space>
 				</div>
 			))}
-			<Divider />
 		</div>
 	);
 };
