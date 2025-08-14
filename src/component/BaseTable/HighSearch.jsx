@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Tag, Space, Divider } from "antd";
 
-const AdvancedSearch = (props) => {
+const HighSearch = (props) => {
 	const { filters = [], selectedFilters = [], onChange } = props;
 
 	// 处理标签点击
@@ -105,4 +105,4 @@ const AdvancedSearch = (props) => {
 	);
 };
 
-export default AdvancedSearch;
+export default HighSearch;

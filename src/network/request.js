@@ -49,6 +49,10 @@ axiosInstance.interceptors.response.use(
 				message.error(response.data.msg);
 				setTimeout(() => {
 					localStorage.removeItem("token");
+					localStorage.removeItem("userInfo");
+					localStorage.removeItem("menuData");
+					localStorage.removeItem("menuOpenKeys");
+					localStorage.removeItem("menuSelectedKeys");
 					window.location.href = "/login";
 				}, 1500);
 			} else {
