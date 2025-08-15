@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import "@ant-design/v5-patch-for-react-19";
 import { ConfigProvider } from "antd";
 import zhCN from "antd/locale/zh_CN";
-import "normalize.css";
 import App from "./App.jsx";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import store from "./store/index.js";
+import "normalize.css";
+import "./tailwind.css";
 import "@/styles/index.scss";
 import globalContext from "./utils/globalContext.js";
 

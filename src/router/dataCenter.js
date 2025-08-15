@@ -13,6 +13,9 @@ const MeasureMarkStatistics = lazy(() => import("@/pages/dataCenter/measureMark-
 const dataCenterRouter = [
 	{
 		path: "dataCenter",
+		meta: {
+			title: "数据中心",
+		},
 		children: [
 			{
 				path: "dataPanel",

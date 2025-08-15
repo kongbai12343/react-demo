@@ -9,6 +9,9 @@ const Franchiser = lazy(() => import("@/pages/customer/franchiser/index.jsx"));
 const customerRouter = [
 	{
 		path: "customer",
+		meta: {
+			title: "客户",
+		},
 		children: [
 			{
 				path: "targeted",

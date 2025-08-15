@@ -1,6 +1,7 @@
 import React, { memo, useState } from "react";
 import { Button, Space, Dropdown, Row, Col, Input, Select, Tag, Flex, DatePicker } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router";
 import BaseTable from "@/component/BaseTable/BaseTable.jsx";
 import TopOperate from "@/component/topOperate/TopOperate.jsx";
 import api from "@/apis";
@@ -547,8 +548,14 @@ const Bill = memo(() => {
 	};
 
 	// 跳转到详情页
+	const navigate = useNavigate();
 	const goToDetail = (record) => () => {
 		console.log(record);
+		navigate("/purchase/bill-detail", {
+			state: {
+				id: record.id,
+			},
+		});
 	};
 
 	return (

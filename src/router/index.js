@@ -36,10 +36,16 @@ const router = createBrowserRouter([
 	{
 		path: "/login",
 		Component: Login,
+		meta: {
+			title: "登录",
+		},
 	},
 	{
 		path: "*",
 		Component: NotFound,
+		meta: {
+			title: "404",
+		},
 	},
 ]);
 

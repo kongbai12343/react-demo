@@ -33,35 +33,38 @@ const Login = observer(() => {
 		loginData.append("account", account);
 		loginData.append("pwd", md5(pwd.toUpperCase()));
 
-		api.login(loginData).then((res) => {
-			// 更新状态
-			userInfoStore.setUserInfo(res.data.userSession);
-			userInfoStore.setToken(res.data.token);
-			userInfoStore.setHasPermission(res.data.hasPermissionStr);
-			// 持久化状态
-			localStorage.setItem("userInfo", JSON.stringify(res.data.userSession));
-			localStorage.setItem("token", res.data.token);
-			const hasPermission = res.data.hasPermissionStr ? res.data.hasPermissionStr.split("|") : [];
-			localStorage.setItem("hasPermission", JSON.stringify(hasPermission));
-			message.success("登录成功");
-			navigate("/");
-			setLoading(false);
-		}).catch(() => {
-			setLoading(false);
-		});
+		api
+			.login(loginData)
+			.then((res) => {
+				// 更新状态
+				userInfoStore.setUserInfo(res.data.userSession);
+				userInfoStore.setToken(res.data.token);
+				userInfoStore.setHasPermission(res.data.hasPermissionStr);
+				// 持久化状态
+				localStorage.setItem("userInfo", JSON.stringify(res.data.userSession));
+				localStorage.setItem("token", res.data.token);
+				const hasPermission = res.data.hasPermissionStr ? res.data.hasPermissionStr.split("|") : [];
+				localStorage.setItem("hasPermission", JSON.stringify(hasPermission));
+				message.success("登录成功");
+				navigate("/");
+				setLoading(false);
+			})
+			.catch(() => {
+				setLoading(false);
+			});
 	};
 	const navigate = useNavigate();
 
 	return (
 		<LoginContainer>
 			<LoginLeft>
-				<LeftTopImg alt="" src="src/assets/images/bg-Upper-left.png" />
-				<CenterImg alt="" src="src/assets/images/img-2.5D.png" />
+				<LeftTopImg alt="" src="/images/bg-Upper-left.png" />
+				<CenterImg alt="" src="/images/img-2.5D.png" />
 			</LoginLeft>
 			<LoginRight>
 				<RightForm>
 					<FormHeader>
-						<FormHeaderLogo alt="" src="src/assets/images/logo.png" />
+						<FormHeaderLogo alt="" src="/images/logo.png" />
 						<FormHeaderTitle>协达ERP供应链管理平台</FormHeaderTitle>
 					</FormHeader>
 
@@ -82,7 +85,7 @@ const Login = observer(() => {
 					<FormFooterVersion>当前版本号：{version}</FormFooterVersion>
 				</RightForm>
 
-				<RightTopImg alt="" src="src/assets/images/bg-lower-right.png" />
+				<RightTopImg alt="" src="/images/bg-lower-right.png" />
 			</LoginRight>
 		</LoginContainer>
 	);

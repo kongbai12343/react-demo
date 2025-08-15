@@ -2,12 +2,16 @@ import { lazy } from "react";
 
 const Supplier = lazy(() => import("@/pages/purchase/supplier/index.jsx"));
 const Bill = lazy(() => import("@/pages/purchase/bill/index.jsx"));
+const BillDetail = lazy(() => import("@/pages/purchase/bill/details.jsx"));
 const WaitStored = lazy(() => import("@/pages/purchase/wait-stored/index.jsx"));
 const TransportDriver = lazy(() => import("@/pages/purchase/transport-driver/index.jsx"));
 
 const purchaseRouter = [
 	{
 		path: "purchase",
+		mate: {
+			title: "采购",
+		},
 		children: [
 			{
 				path: "supplier",
@@ -21,6 +25,13 @@ const purchaseRouter = [
 				Component: Bill,
 				mate: {
 					title: "采购订单",
+				},
+			},
+			{
+				path: "bill-detail",
+				Component: BillDetail,
+				mate: {
+					title: "采购单详情",
 				},
 			},
 			{

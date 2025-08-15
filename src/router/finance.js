@@ -9,6 +9,9 @@ const BalanceDeduction = lazy(() => import("@/pages/finance/balance-deduction/in
 const financeRouter = [
 	{
 		path: "financial",
+		meta: {
+			title: "财务",
+		},
 		children: [
 			{
 				path: "/financial/receipt",

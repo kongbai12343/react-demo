@@ -17,6 +17,9 @@ const Notify = lazy(() => import("@/pages/systemConfig/notify/index.jsx"));
 const systemConfigRouter = [
 	{
 		path: "system-config",
+		meta: {
+			title: "系统配置",
+		},
 		children: [
 			{
 				path: "level-one",

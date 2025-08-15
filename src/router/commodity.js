@@ -8,32 +8,35 @@ const GiftCard = lazy(() => import("../pages/commodity/gift-card/index.jsx"));
 const commodityRouter = [
 	{
 		path: "commodity",
+		meta: {
+			title: "商品",
+		},
 		children: [
 			{
 				path: "product-archives",
 				Component: ProductArchives,
-				mate: {
+				meta: {
 					title: "商品档案管理",
 				},
 			},
 			{
 				path: "brand",
 				Component: Brand,
-				mate: {
+				meta: {
 					title: "商品品牌管理",
 				},
 			},
 			{
 				path: "commodity-archives",
 				Component: CommodityArchives,
-				mate: {
+				meta: {
 					title: "商品档案管理",
 				},
 			},
 			{
 				path: "gift-card",
 				Component: GiftCard,
-				mate: {
+				meta: {
 					title: "礼品卡",
 				},
 			},

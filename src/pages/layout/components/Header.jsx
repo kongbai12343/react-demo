@@ -167,7 +167,7 @@ const Header = observer((props) => {
 			<Dropdown menu={{ items, onClick }}>
 				<a onClick={(e) => e.preventDefault()}>
 					<Space>
-						<Avatar src="src/assets/images/user@2x.png" />
+						<Avatar src="/images/user@2x.png" />
 						<NamePermission>
 							<span>{userInfo?.name}</span>
 							<span style={{ opacity: 0.6 }}>{userInfo?.postName}</span>

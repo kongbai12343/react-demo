@@ -8,6 +8,9 @@ const IntendingAudit = lazy(() => import("@/pages/order/intending-audit/index.js
 const orderRouter = [
 	{
 		path: "sale",
+		meta: {
+			title: "订单",
+		},
 		children: [
 			{
 				path: "pre-sale",

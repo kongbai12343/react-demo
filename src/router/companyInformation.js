@@ -7,6 +7,9 @@ const OrganizationShow = lazy(() => import("@/pages/companyInformation/organizat
 const companyInformationRouter = [
 	{
 		path: "system",
+		meta: {
+			title: "账户资料",
+		},
 		children: [
 			{
 				path: "arct-show",
