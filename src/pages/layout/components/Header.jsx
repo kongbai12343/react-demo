@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined, ExclamationCircleFilled } from "@ant-design/icons";
 import { Button, theme, Space, Avatar, Breadcrumb, Dropdown, Modal, Form, Input, message } from "antd";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import { observer } from "mobx-react-lite";
 import md5 from "js-md5";
 
 import globalContext from "@/utils/globalContext.js";
 import { HeaderContainer, NamePermission } from "@/pages/layout/styles/header.style.js";
 import api from "@/apis";
+import useBreadcrumb from "@/hooks/useBreadcrumb.js";
 
 const Header = observer((props) => {
 	const { collapsed, toggle } = props;
@@ -23,7 +24,8 @@ const Header = observer((props) => {
 		{ key: "changePassword", label: "修改密码" },
 	];
 
-	const [breadcrumbs, setBreadcrumbs] = useState([]);
+	// 使用新的面包屑 hook
+	const breadcrumbs = useBreadcrumb();
 
 	const [show, setShow] = useState(false);
 	const [account, _] = useState(() => {
@@ -34,39 +36,6 @@ const Header = observer((props) => {
 	const [confirmLoading, setConfirmLoading] = useState(false);
 	const { userInfoStore, menuStore } = useContext(globalContext);
 	const navigate = useNavigate();
-	const { pathname } = useLocation(); // 获取当前路由
-
-	useEffect(() => {
-		const menuData = localStorage.getItem("menuData");
-		const openKeys = localStorage.getItem("menuOpenKeys");
-		const selectedKeys = localStorage.getItem("menuSelectedKeys");
-
-		if (menuData && openKeys && selectedKeys) {
-			const parsedMenuData = JSON.parse(menuData);
-			const openKey = Number(JSON.parse(openKeys)[0]);
-			const selectedKey = Number(JSON.parse(selectedKeys)[0]);
-
-			let breadcrumbs = findBreadcrumb(parsedMenuData, openKey, selectedKey);
-			setBreadcrumbs(breadcrumbs);
-		}
-	}, [pathname]);
-
-	const findBreadcrumb = (menuData, openKey, selectedKey) => {
-		if (!menuData || !Array.isArray(menuData)) return [];
-		let breadcrumb = [];
-		let firstMenu = menuData.find((item) => item.id === openKey);
-		if (firstMenu) {
-			breadcrumb.push({ title: firstMenu.menuName });
-			// 获取二级菜单
-			if (firstMenu.children && firstMenu.children.length > 0) {
-				const secondMenu = firstMenu.children.find((item) => item.id === selectedKey);
-				if (secondMenu) {
-					breadcrumb.push({ title: secondMenu.menuName });
-				}
-			}
-		}
-		return breadcrumb;
-	};
 	const logout = () => {
 		// 清理用户信息
 		userInfoStore.setUserInfo(null);

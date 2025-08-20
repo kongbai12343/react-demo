@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router";
 
 // 颜色常量
 const Colors = {
@@ -156,7 +155,7 @@ export const BackHomeButton = styled.button`
 	}
 `;
 
-export const BackHomeLink = styled(Link)`
+export const BackHomeLink = styled.a`
 	display: block;
 	text-decoration: none;
 	color: white;

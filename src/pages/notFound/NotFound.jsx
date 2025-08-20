@@ -1,5 +1,6 @@
 // NotFound.jsx
 import React from "react";
+import { useNavigate } from "react-router";
 import {
 	Arrow,
 	ArrowContainer,
@@ -15,6 +16,15 @@ import {
 } from "./NotFound.styles";
 
 const NotFound = () => {
+	const navigate = useNavigate();
+	const handleBackToHome = () => {
+		// 清除菜单相关缓存
+		localStorage.removeItem("menuOpenKeys");
+		localStorage.removeItem("menuSelectedKeys");
+
+		// 跳转到首页
+		navigate("/");
+	};
 	return (
 		<ErrorContainer>
 			<ErrorCode>
@@ -32,7 +42,7 @@ const NotFound = () => {
 			</ErrorMessage>
 
 			<BackHomeButton>
-				<BackHomeLink to="/">返回首页</BackHomeLink>
+				<BackHomeLink onClick={handleBackToHome}>返回首页</BackHomeLink>
 				<ArrowContainer>
 					<Arrow />
 				</ArrowContainer>

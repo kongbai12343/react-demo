@@ -9,42 +9,42 @@ const TransportDriver = lazy(() => import("@/pages/purchase/transport-driver/ind
 const purchaseRouter = [
 	{
 		path: "purchase",
-		mate: {
+		meta: {
 			title: "采购",
 		},
 		children: [
 			{
 				path: "supplier",
 				Component: Supplier,
-				mate: {
+				meta: {
 					title: "供应商",
 				},
 			},
 			{
 				path: "bill",
 				Component: Bill,
-				mate: {
+				meta: {
 					title: "采购订单",
 				},
 			},
 			{
 				path: "bill-detail",
 				Component: BillDetail,
-				mate: {
+				meta: {
 					title: "采购单详情",
 				},
 			},
 			{
 				path: "wait-stored",
 				Component: WaitStored,
-				mate: {
+				meta: {
 					title: "待入库采购单",
 				},
 			},
 			{
 				path: "transport-driver",
 				Component: TransportDriver,
-				mate: {
+				meta: {
 					title: "运输司机",
 				},
 			},
