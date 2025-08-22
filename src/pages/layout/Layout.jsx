@@ -14,7 +14,7 @@ const Layout = () => {
 	};
 
 	return (
-		<LayoutContainer>
+		<LayoutContainer className={collapsed ? "sider-collapsed" : "sider-expanded"}>
 			<AntdLayout style={{ height: "100vh" }}>
 				<Sider rigger={null} collapsible collapsed={collapsed} />
 				<AntdLayout>

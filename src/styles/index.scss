@@ -1,29 +1,44 @@
+:root {
+	--sider-width: 200px;
+	--sider-collapsed-width: 80px;
+}
+
+/* 菜单展开状态 */
+.sider-expanded {
+	--sider-width: 200px;
+}
+
+/* 菜单收起状态 */
+.sider-collapsed {
+	--sider-width: 80px;
+}
+
 body {
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 }
 
 .ant-menu-submenu-popup > .ant-menu-sub {
-  max-height: 500px !important; /* 控制最大高度 */
-  overflow: hidden;
-  overflow-y: scroll; /* 超出时滚动 */
-  scrollbar-width: none; /* Firefox 隐藏滚动条 */
+	max-height: 500px !important; /* 控制最大高度 */
+	overflow: hidden;
+	overflow-y: scroll; /* 超出时滚动 */
+	scrollbar-width: none; /* Firefox 隐藏滚动条 */
 }
 
 /* Chrome / Edge / Safari 隐藏滚动条 */
 .ant-menu-submenu-popup > .ant-menu-sub::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 /* main区域滚动 */
 .ant-layout-content {
-  overflow: hidden;
-  overflow-y: scroll;
-  scrollbar-width: none;
+	overflow: hidden;
+	overflow-y: scroll;
+	scrollbar-width: none;
 }
 
 .ant-layout-content > .ant-menu-sub::-webkit-scrollbar {
-  display: none;
+	display: none;
 }

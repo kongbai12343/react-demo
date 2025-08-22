@@ -17,10 +17,7 @@ const useDocumentTitle = () => {
 		lastPathnameRef.current = pathname;
 
 		// 查找匹配的路由
-		let currentRoute = flatRoutes.find((route) => {
-			if (route.path === pathname) return true;
-			return false;
-		});
+		let currentRoute = flatRoutes.find((route) => route.path === pathname);
 
 		if (!currentRoute) {
 			for (const route of flatRoutes) {

@@ -550,18 +550,24 @@ const Bill = memo(() => {
 	// 跳转到详情页
 	const navigate = useNavigate();
 	const goToDetail = (record) => () => {
-		console.log(record);
-		navigate("/purchase/bill-detail", {
-			state: {
-				id: record.id,
-			},
-		});
+		// 方式1：只使用查询参数（在地址栏显示）
+		const params = {
+			id: record.id,
+			isMachining: record.isMachining || 0,
+			putStatus: record.putStatus || 0,
+		};
+		navigate(`/purchase/bill-detail?${new URLSearchParams(params).toString()}`);
+	};
+
+	// 新增采购单
+	const goToAdd = () => {
+		navigate("/purchase/bill-detail?mode=new");
 	};
 
 	return (
 		<>
 			<TopOperate>
-				<Button type="primary" onClick={goToDetail}>
+				<Button type="primary" onClick={goToAdd}>
 					<PlusOutlined />
 					新增
 				</Button>
